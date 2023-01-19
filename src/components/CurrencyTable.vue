@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, ref, watchEffect} from "vue";
+import {computed, ref} from "vue";
 import {useStore} from "../store/store";
 import CurrencyTableEmpty from "./CurrencyTableEmpty.vue";
 
@@ -12,7 +12,7 @@ const isCurrencyGrow = ref(false);
 
 const searchResult = computed(() => {
   // отдаем то что совпадает с запросом по имени или числовому коду
-  return store.currencyCollection.filter(currency => {
+  return store.currencyCollection.filter((currency) => {
     const editedQuery = props.searchQuery.toLowerCase()
 
     if (
@@ -37,7 +37,7 @@ const calculateDifference = (current, prev) => {
       <div class="currency__item-prev cell">{{item.Previous}} ₽</div>
       <div class="currency__item-value cell">{{item.Value}} ₽</div>
       <div
-        :class="{grow: Math.sign(item.Value - item.Previous) === 1}"
+        :class="Math.sign(item.Value - item.Previous) === 1 ? 'grow' : 'down'"
         class="currency__item-change cell"
       >{{ calculateDifference(item.Value, item.Previous) }}</div>
     </li>

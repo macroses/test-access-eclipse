@@ -12,6 +12,15 @@ export const useStore = defineStore({
       currencyNumber: 1,
       calculatedResult: 0
     } as MainStore),
+  getters: {
+    calculateCurrency(state) {
+      if (state.currencyLeftValue && state.currencyRightValue) {
+        return Number((
+          (state.currencyLeftValue.Value / state.currencyRightValue.Value) * state.currencyNumber
+        ).toFixed(4))
+      }
+    }
+  },
   actions: {
     async fetchCurrency () {
       const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
@@ -36,13 +45,5 @@ export const useStore = defineStore({
       [this.currencyLeftValue, this.currencyRightValue] = [this.currencyRightValue, this.currencyLeftValue];
     }
   },
-  getters: {
-    calculateCurrency(state) {
-      if (state.currencyLeftValue && state.currencyRightValue) {
-        state.calculatedResult = Number((
-          (state.currencyLeftValue.Value / state.currencyRightValue.Value) * state.currencyNumber
-        ).toFixed(4))
-      }
-    }
-  }
+
 });

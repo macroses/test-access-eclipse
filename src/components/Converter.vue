@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import MySelect from "./MySelect.vue";
-import MyInput from "./MyInput.vue";
 import {useStore} from "../store/store";
-import {Collection} from "../interfaces/types";
 import ConverterLeft from "./ConverterLeft.vue";
 import ConverterRight from "./ConverterRight.vue";
 

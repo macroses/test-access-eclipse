@@ -81,11 +81,38 @@ main {
 
 .currency__item-change.grow {
     color: green;
+    position: relative;
 }
+
+
 
 .currency__item-change {
     font-weight: bold;
     color: red;
+}
+
+.currency__item-change.down::before {
+    content: '';
+    margin-right: 5px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: none;
+
+    border-top: 5px solid red;
+}
+
+.currency__item-change.grow::before {
+    content: '';
+    margin-right: 5px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 0;
+
+    border-bottom: 5px solid green;
 }
 
 .currency__empty {
