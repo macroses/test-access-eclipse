@@ -28,7 +28,6 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
 }
 
 ul {
@@ -62,6 +61,7 @@ main {
     padding: 10px 20px;
     border: 1px solid lightgray;
     width: 100%;
+    border-radius: 4px;
 }
 
 .currency__item-head {
@@ -93,4 +93,59 @@ main {
     font-weight: bold;
     text-align: center;
     padding: 10px;
+}
+
+.converter {
+    display: flex;
+    gap: 20px;
+}
+
+.converter__left,
+.converter__right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.converter__change-button {
+    background-color: transparent;
+    border: 0;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.tabs__header {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    border-bottom: 1px solid lightgray;
+}
+
+.tabs__item {
+    flex: 1;
+    padding: 5px 0;
+    border-radius: 5px 5px 0 0;
+    transition: .4s all ease-out;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+}
+
+.tabs__item.selected {
+    background-color: rgba(250, 250, 250, 1);
+    border: 1px solid lightgray;
+    border-bottom: 0;
+    pointer-events: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+.tabs__content {
+    padding-top: 20px;
 }

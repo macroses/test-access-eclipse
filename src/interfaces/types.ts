@@ -9,8 +9,8 @@ export interface Collection {
 }
 
 export interface MainStore {
-  currencyData?: null | MainData,
-  currencyCollection: null | Array<Collection>,
+  currencyData: MainData | null,
+  currencyCollection: null | Array<Collection> | unknown,
   currencyLeftValue: null | Collection,
   currencyRightValue: null | Collection,
   currencyNumber: number,
@@ -31,4 +31,5 @@ export interface MainData {
   previousDate: string,
   "PreviousURL": string,
   "Timestamp": string,
+  "Valute"?: Array<Collection>
 }

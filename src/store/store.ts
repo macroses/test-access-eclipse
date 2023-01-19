@@ -1,16 +1,17 @@
 import { defineStore } from "pinia";
+import {MainStore, MainStoreActions, MainStoreGetters} from "../interfaces/types";
 
 export const useStore = defineStore({
   id: "mainStore",
   state: () =>
     ({
-      currencyData: {},
+      currencyData: null,
       currencyCollection: [],
       currencyLeftValue: null,
       currencyRightValue: null,
       currencyNumber: 1,
       calculatedResult: 0
-    }),
+    } as MainStore),
   actions: {
     async fetchCurrency () {
       const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
@@ -24,7 +25,7 @@ export const useStore = defineStore({
         // и разделим на две части, чтобы отделить общую информацию от массива валют
         this.currencyData = {...data}
         this.currencyCollection = [...Object.values(data.Valute)]
-        delete this.currencyData.Valute;
+        delete this.currencyData?.Valute;
       }
       catch (e: any) {
         console.log(e.message)
@@ -38,7 +39,9 @@ export const useStore = defineStore({
   getters: {
     calculateCurrency(state) {
       if (state.currencyLeftValue && state.currencyRightValue) {
-        state.calculatedResult = ((state.currencyLeftValue.Value / state.currencyRightValue.Value) * state.currencyNumber).toFixed(4)
+        state.calculatedResult = Number((
+          (state.currencyLeftValue.Value / state.currencyRightValue.Value) * state.currencyNumber
+        ).toFixed(4))
       }
     }
   }
