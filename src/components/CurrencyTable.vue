@@ -23,7 +23,7 @@ const searchResult = computed(() => {
   })
 })
 
-const calculateDifference = (current, prev) => {
+const calculateDifference = (current: number, prev: number) => {
   return (current - prev).toFixed(4)
 }
 </script>

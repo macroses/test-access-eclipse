@@ -4,8 +4,6 @@ import ConverterLeft from "./ConverterLeft.vue";
 import ConverterRight from "./ConverterRight.vue";
 
 const store = useStore();
-
-
 </script>
 
 <template>
